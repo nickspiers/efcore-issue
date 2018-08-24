@@ -9,7 +9,7 @@ using WebApplication2;
 
 namespace WebApplication2.Migrations
 {
-    [DbContext(typeof(AppContext))]
+    [DbContext(typeof(EfCoreContext))]
     [Migration("20180811021644_Initial")]
     partial class Initial
     {

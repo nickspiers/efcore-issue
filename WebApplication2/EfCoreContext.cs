@@ -3,9 +3,9 @@ using WebApplication2.Entities;
 
 namespace WebApplication2
 {
-    public class AppContext : DbContext
+    public class EfCoreContext : DbContext
     {
-        public AppContext(DbContextOptions<AppContext> options) : base(options)
+        public EfCoreContext(DbContextOptions<EfCoreContext> options) : base(options)
         {
         }
         public DbSet<Foo> Foos { get; set; }

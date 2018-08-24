@@ -33,11 +33,11 @@ namespace WebApplication2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppContext>(options =>
+            services.AddDbContext<EfCoreContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddOData();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            services.AddTransient(_ => new Ef6Context(Configuration.GetConnectionString("DefaultConnection")));
             Mapper.Initialize(x =>
             {
                 x.AddProfile<MappingProfile>();

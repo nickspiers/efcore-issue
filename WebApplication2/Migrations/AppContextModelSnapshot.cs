@@ -8,7 +8,7 @@ using WebApplication2;
 
 namespace WebApplication2.Migrations
 {
-    [DbContext(typeof(AppContext))]
+    [DbContext(typeof(EfCoreContext))]
     partial class AppContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

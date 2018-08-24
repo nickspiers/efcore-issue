@@ -10,9 +10,9 @@ namespace WebApplication2.Controllers
         where TEntity: EntityBase
         where TModel : ModelBase
     {
-        private readonly AppContext _context;
+        private readonly Ef6Context _context;
 
-        public BaseController(AppContext context)
+        public BaseController(Ef6Context context)
         {
             _context = context;
         }

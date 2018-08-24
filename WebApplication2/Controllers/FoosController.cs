@@ -4,7 +4,7 @@ namespace WebApplication2.Controllers
 {
     public class FoosController : BaseController<Foo, Models.Foo>
     {
-        public FoosController(AppContext context) : base(context)
+        public FoosController(Ef6Context context) : base(context)
         {
         }
     }
