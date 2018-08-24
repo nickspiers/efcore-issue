@@ -18,7 +18,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using ProductODataService.Extensions;
 using WebApplication2.Entities;
 
 namespace WebApplication2
@@ -64,7 +63,7 @@ namespace WebApplication2
 
             app.UseMvc(routeBuilder =>
             {
-                routeBuilder.MapODataServiceRoute("api", "api", model, new PathAndSlashEscapeODataPathHandler(), ODataRoutingConventions.CreateDefault());
+                routeBuilder.MapODataServiceRoute("api", "api", model);
                 routeBuilder.Count().Filter().OrderBy().Expand().Select().MaxTop(null);
                 routeBuilder.EnableDependencyInjection();
                 routeBuilder.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
