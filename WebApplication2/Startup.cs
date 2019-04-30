@@ -37,7 +37,10 @@ namespace WebApplication2
             services.AddDbContext<AppContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddOData();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddControllers(options => { 
+                    options.EnableEndpointRouting = false; // TODO: remove once UseEndpoints works
+                })
+                .AddNewtonsoftJson();
 
             Mapper.Initialize(x =>
             {
@@ -61,6 +64,8 @@ namespace WebApplication2
 
             var model = GetEdmModel(app);
 
+            // TODO: app.UseEndpoints
+            // TODO: https://github.com/OData/WebApi/issues/1748
             app.UseMvc(routeBuilder =>
             {
                 routeBuilder.MapODataServiceRoute("api", "api", model);
