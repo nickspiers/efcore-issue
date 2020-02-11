@@ -42,10 +42,11 @@ namespace WebApplication2
                 })
                 .AddNewtonsoftJson();
 
-            Mapper.Initialize(x =>
-            {
-                x.AddProfile<MappingProfile>();
-            });
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile<MappingProfile>(); });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
